@@ -1,7 +1,6 @@
 # Load packages ----
 library(shiny)
-library(maps)
-library(mapproj)
+
 
 
 # User interface ----
