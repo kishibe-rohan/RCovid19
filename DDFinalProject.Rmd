@@ -1,0 +1,60 @@
+---
+title: "RCovid19"
+author: "SB"
+date: "21/07/2020"
+output:
+  ioslides_presentation: default
+  slidy_presentation: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Introdcution
+
+
+- A new coronavirus designated 2019-nCoV was first identified in Wuhan, the capital of China's Hubei province.
+- People developed pneumonia without a clear cause and for which existing vaccines or treatments were not effective.
+- The virus has shown evidence of human-to-human transmission
+Transmission rate (rate of infection) appeared to escalate in mid-January 2020 
+
+
+The app explores the <a href="https://www.kaggle.com/imdevskp/corona-virus-report">dataset</a> to analyze the top 10 countries affected by the pandemic .
+
+
+
+## Global Toll
+
+In this slide,we get a glance of the dataset where we display the various variables available.
+
+```{r, echo = TRUE}
+covidata <- read.csv('C:/Users/HP/Desktop/DSCoursera/covid_19.csv')
+
+head(covidata[,1:5],5)
+```
+
+## App Demo
+The app displays the top 10 countries(in the form of a barplot) according to the variable chosen by the user,which may be **Active**,**Confirmed**,**Recovered** or **Deaths** 
+
+```{r,echo=FALSE,warning=FALSE,message=FALSE}
+recIdx <- order(-covidata[,"Recovered"],covidata[,"Country.Region"])
+rec <- covidata[recIdx,c(1,4),drop = FALSE]
+rec <- rec[1:10,]
+
+par(mfrow=c(1,1))
+    barplot(rec$Recovered,main="Countries by Recovered",space=0.1,width=1,las=3,names.arg = rec$Country.Region,col=rainbow(20),horiz=FALSE)
+    axis(2,at= seq(0,1500000,200000))
+
+
+
+```
+
+
+
+## Future Scope
+
+
+- The app can be further enhanced to add chloropleth maps,scatterplots,etc. 
+- The varied amount of data available can be further used to fit regression models to explore various patterns from the data.
+- For source code,visit https://github.com/kishibe-rohan/RCovid19
