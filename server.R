@@ -1,7 +1,6 @@
 
 #Loading libraries
 library(shiny)
-library(plotly)
 library(data.table)
 library(dplyr)
 library(reshape2)
